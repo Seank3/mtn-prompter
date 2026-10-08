@@ -1,0 +1,33 @@
+# Netlify config. No build step: the app is already static, zero-dependency.
+# Publish the repo root as-is.
+
+[build]
+  publish = "."
+  command = ""
+
+# Cache policy is in _headers (Netlify reads that too). Repeated here so the
+# service worker never comes back from the edge stale.
+[[headers]]
+  for = "/sw.js"
+  [headers.values]
+    Cache-Control = "no-cache, no-store, must-revalidate"
+    Service-Worker-Allowed = "/"
+
+[[headers]]
+  for = "/index.html"
+  [headers.values]
+    Cache-Control = "no-cache, no-store, must-revalidate"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Cache-Control = "no-cache, must-revalidate"
+    X-Content-Type-Options = "nosniff"
+
+# The app routes with the URL fragment (#/log, #/float, ...), never with path
+# segments, so no SPA rewrite fallback is required. If you ever switch to the
+# History API, add:
+#   [[redirects]]
+#     from = "/*"
+#     to = "/index.html"
+#     status = 200

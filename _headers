@@ -1,0 +1,22 @@
+# Netlify / Cloudflare Pages header rules.
+# Plain `_headers` — both platforms read it without any build step.
+#
+# WHY EVERYTHING IS `no-cache`:
+# This is a service-worker PWA. The service worker is the offline cache, and a
+# browser will not re-fetch an HTTP-cached sw.js — so a long-lived edge TTL
+# means a merchant gets a stale app forever and updates never land. Letting the
+# browser revalidate cheaply and cache "for real" in the SW is the correct
+# split. If you later add content-hashed filenames, give THOSE a long max-age
+# and leave sw.js/index.html on no-cache.
+
+/sw.js
+  Cache-Control: no-cache, no-store, must-revalidate
+  Service-Worker-Allowed: /
+
+/index.html
+  Cache-Control: no-cache, no-store, must-revalidate
+
+/*
+  Cache-Control: no-cache, must-revalidate
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin

@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1" />
+<title>MM Money Prompter — Airtel, MTN &amp; VISA</title>
+<meta name="description" content="A step-by-step counter prompter for mobile money and card merchants: Airtel Money, MTN MoMo and VISA acceptance, with transaction logging, float reconciliation and Z-reports." />
+<meta name="theme-color" content="#0b1020" />
+<meta name="color-scheme" content="dark light" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="MM Prompter" />
+<link rel="manifest" href="./manifest.webmanifest" />
+<!-- Brand marks are used on first paint (tabs, cards, prompter header), so
+     preload them with the shell rather than discovering them from JS. -->
+<link rel="preload" as="image" href="./assets/brands/airtel-mark.png" />
+<link rel="preload" as="image" href="./assets/brands/mtn-mark.png" />
+<link rel="preload" as="image" href="./assets/brands/visa-mark.png" />
+<link rel="preload" as="image" href="./assets/brands/mastercard-mark.png" />
+<link rel="icon" href="./icons/icon.svg" type="image/svg+xml" />
+<link rel="apple-touch-icon" href="./icons/icon-192.png" />
+<link rel="stylesheet" href="./css/app.css" />
+</head>
+<body>
+
+<header id="topbar" class="topbar"></header>
+
+<main id="app" class="app" aria-live="polite"></main>
+
+<nav id="tabbar" class="tabbar" aria-label="Main sections"></nav>
+
+<div id="splash" class="splash">
+  <div class="splash__mark">M</div>
+  <p>Loading your scripts…</p>
+</div>
+
+<noscript>
+  <div class="noscript">This prompter needs JavaScript enabled.</div>
+</noscript>
+
+<script type="module" src="./js/app.js"></script>
+</body>
+</html>
